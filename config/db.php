@@ -3,7 +3,7 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=meta_app',
-    'username' => 'root',
+    'username' => 'starmech',
     'password' => 'hjvfy8008dkfc.r',
     'charset' => 'utf8',
 
