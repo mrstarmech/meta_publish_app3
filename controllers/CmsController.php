@@ -67,7 +67,7 @@ class CmsController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->isGuest) return $this->redirect('login');
+        if(Yii::$app->user->isGuest) return $this->redirect('/cms/login');
         $articles = Article::find()->all();
         return $this->render('index',['articles'=>$articles]);
     }
@@ -80,12 +80,12 @@ class CmsController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->redirect('index');
+            return $this->redirect('/cms/index');
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('index');
+            return $this->redirect('/cms/index');
         } 
 
         $model->password = '';
