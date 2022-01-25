@@ -101,7 +101,7 @@ class CmsController extends Controller
      */
     public function actionLogout()
     {
-        if(Yii::$app->user->isGuest) return $this->redirect('login');
+        if(Yii::$app->user->isGuest) return $this->redirect('/cms/login');
 
         Yii::$app->user->logout();
 
@@ -110,7 +110,7 @@ class CmsController extends Controller
 
     public function actionCreate()
     {
-        if(Yii::$app->user->isGuest) return $this->redirect('login');
+        if(Yii::$app->user->isGuest) return $this->redirect('/cms/login');
 
         $model = new Article();
         $content = new ArticleContent();
@@ -134,7 +134,7 @@ class CmsController extends Controller
             $model->content_id = $content->id;
             if($model->save()) {
                 Yii::$app->session->setFlash('success', 'Model saved<br>');
-                return $this->redirect('index');
+                return $this->redirect('/cms/index');
             } else {
                 Yii::$app->session->setFlash('error', 'Can\'t save model<br>' . json_encode($model->errors));
                 return $this->render('create', ['model'=>$model]);
@@ -144,7 +144,7 @@ class CmsController extends Controller
     }
 
     public function actionEdit($id) {
-        if(Yii::$app->user->isGuest) return $this->redirect('login');
+        if(Yii::$app->user->isGuest) return $this->redirect('/cms/login');
 
         $model = Article::findOne($id);
         $content = ArticleContent::findOne($model->content_id);
