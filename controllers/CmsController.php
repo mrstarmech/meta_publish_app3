@@ -121,7 +121,6 @@ class CmsController extends Controller
                 if (!is_dir($path)) {
                     mkdir($path, 0777, true);
                 }
-                chmod($path, 0777);
                 $t = time();
                 $file->saveAs($path.$t."$file->name",false);
                 $model->thumbnail = "/img/article_thumbs/$t"."$file->name";
@@ -156,7 +155,6 @@ class CmsController extends Controller
                 if (!is_dir($path)) {
                     mkdir($path, 0777, true);
                 }
-                chmod($path, 0777);
                 $t = time();
                 $file->saveAs($path.$t."$file->name",false);
                 $model->thumbnail = "/img/article_thumbs/$t"."$file->name";
