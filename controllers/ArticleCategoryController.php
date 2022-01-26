@@ -2,13 +2,19 @@
 
 namespace app\controllers;
 
-class ArticleCategoryController extends \yii\rest\ActiveController
-{
-    public $modelClass = 'app\models\ArticleCategory';
+use app\models\Article;
+use app\models\ArticleCategory;
 
-    public function actions():array {
-        $actions = parent::actions();
-        unset($actions['delete'],$actions['create'],$actions['update']);
-        return $actions;
+class ArticleCategoryController extends \yii\web\Controller
+{
+    public function actionIndex() {
+        $categories = ArticleCategory::find()->all();
+        $tosend = [];
+        foreach($categories as $category) {
+            if($category->count > 0) {
+                array_push($tosend, ['id'=>$category->id,'name'=>$category->name]);
+            }
+        }
+        return json_encode($tosend);
     }
 }
