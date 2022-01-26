@@ -118,15 +118,16 @@ class CmsController extends Controller
         $content = new ArticleContent();
         if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model, 'thumbnail');
+            $t = time();
             if($file) {
                 $path = Yii::getAlias("@webroot") . "/img/article_thumbs/";
                 if (!is_dir($path)) {
                     mkdir($path, 0777, true);
                 }
-                $t = time();
                 $file->saveAs($path.$t."$file->name",false);
                 $model->thumbnail = "/img/article_thumbs/$t"."$file->name";
             }
+
             $content->content = Yii::$app->request->post()["Article"]["actual_content"];
             if(!$content->save()) {
                 Yii::$app->session->setFlash('error', 'Can\'t save content<br>' . json_encode($content->errors));
@@ -153,16 +154,26 @@ class CmsController extends Controller
         $model->actual_content = $content->content;
         if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model, 'file_input');
+            $t = time();
             if($file) {
                 $path = Yii::getAlias("@webroot") . "/img/article_thumbs/";
                 if (!is_dir($path)) {
                     mkdir($path, 0777, true);
                 }
-                $t = time();
                 $file->saveAs($path.$t."$file->name",false);
                 $model->thumbnail = "/img/article_thumbs/$t"."$file->name";
             }
-            $content->content = Yii::$app->request->post()["Article"]["actual_content"];
+            $files = UploadedFile::getInstances($model, 'imageFiles');
+            foreach ($files as $f) {
+                $path = Yii::getAlias("@webroot") . "/img/uploads/$model->id/";
+                if (!is_dir($path)) {
+                    mkdir($path, 0777, true);
+                }
+                $f->saveAs($path."$f->name",false);
+                $model->has_files = true;
+            }
+            if($model->has_files) $content->content = $this->process_img(Yii::$app->request->post()["Article"]["actual_content"], $model->id);
+            else $content->content = Yii::$app->request->post()["Article"]["actual_content"];
             if(!$content->save()) {
                 Yii::$app->session->setFlash('error', 'Can\'t save content<br>' . json_encode($content->errors));
                 return $this->render('edit', ['model'=>$model,'cats'=>$categories]);
@@ -185,5 +196,16 @@ class CmsController extends Controller
         $toDelete->delete();
         $content->delete();
         return $this->redirect('/cms/index');
+    }
+
+    private function process_img($html, $id) {
+        
+        return preg_replace_callback('/(<img.+src=")(.+?)(".*?\/>)/i',function($matches)use($id){
+            if(str_contains($matches[2],'/img/')) {
+                return $matches[0];
+            } else {
+                return $matches[1]."/img/uploads/$id/$matches[2]".$matches[3];
+            }
+        },$html);
     }
 }

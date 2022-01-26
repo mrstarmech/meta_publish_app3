@@ -22,6 +22,7 @@ echo $form->field($model, 'thumbnail', ['options'=>['style'=>'margin-bottom:0!im
 <br>
 <?php
 echo $form->field($model, 'file_input')->fileInput();
+echo $form->field($model, 'imageFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*']);
 echo $form->field($model, 'thumbstring')->textarea([
     'rows' => 3,
     'style' => 'resize:none;width:100%;padding:10px;font-size:1em;',

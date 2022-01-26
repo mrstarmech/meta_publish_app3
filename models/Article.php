@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\web\UploadedFile;
 /**
  * This is the model class for table "article".
  *
@@ -23,6 +23,10 @@ class Article extends \yii\db\ActiveRecord
 {
     public $actual_content;
     public $file_input;
+    /**
+     * @var UploadedFile[]
+     */
+    public $imageFiles;
 
     /**
      * {@inheritdoc}
@@ -40,10 +44,13 @@ class Article extends \yii\db\ActiveRecord
         return [
             [['title', 'author', 'date', 'thumbnail', 'thumbstring', 'category_id', 'content_id'], 'required'],
             [['date'], 'string'],
+            [['has_files'], 'boolean'],
             [['category_id', 'content_id'], 'integer'],
             [['title', 'author', 'thumbnail', 'thumbstring'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ArticleCategory::class, 'targetAttribute' => ['category_id' => 'id']],
             [['content_id'], 'exist', 'skipOnError' => true, 'targetClass' => ArticleContent::class, 'targetAttribute' => ['content_id' => 'id']],
+            [['imageFiles'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif, jfif, webp', 'maxFiles'=>128],
+            [['file_input'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif, jfif, webp'],
         ];
     }
 
@@ -62,7 +69,8 @@ class Article extends \yii\db\ActiveRecord
             'category_id' => 'Category ID',
             'content_id' => 'Content ID',
             'actual_content' => 'Content',
-            'file_input' => 'Load New Thumbnail'
+            'file_input' => 'Load New Thumbnail',
+            'imageFiles' => 'Additional Images'
         ];
     }
 
