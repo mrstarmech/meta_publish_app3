@@ -22,6 +22,7 @@ use Yii;
 class Article extends \yii\db\ActiveRecord
 {
     public $actual_content;
+    public $file_input;
 
     /**
      * {@inheritdoc}
@@ -60,7 +61,8 @@ class Article extends \yii\db\ActiveRecord
             'thumbstring' => 'Thumbstring',
             'category_id' => 'Category ID',
             'content_id' => 'Content ID',
-            'actual_content' => 'Content'
+            'actual_content' => 'Content',
+            'file_input' => 'Load New Thumbnail'
         ];
     }
 

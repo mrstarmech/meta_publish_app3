@@ -26,7 +26,9 @@ $this->title = 'List of articles';
                 <img src="<?=$article->thumbnail?>" alt="" class="img-fluid img-thumbnail" style="max-width: 200px;">
             </div>
             <div class="col-xs">
-                <a href="/cms/edit/<?=$article->id?>" class="btn btn-primary">Edit</a>
+                <div><a href="/cms/edit/<?=$article->id?>" class="btn btn-primary">Edit</a></div>
+                <br>
+                <div><a href="/cms/delete/<?=$article->id?>" class="btn btn-danger">Delete</a></div>
             </div>
         </div>
 

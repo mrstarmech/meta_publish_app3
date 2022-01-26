@@ -18,6 +18,13 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'authKey' => 'al=sdkjh=alshd=sxcvnjhbsdlakhsfiw0e9f09e0293hrp23hfgp',
             'accessToken' => '8132691732659871298734658917625',
         ],
+        '101' => [
+            'id' => '101',
+            'username' => 'ar',
+            'password' => 'fktrcfylh8008hsvjuftd',
+            'authKey' => 'elrwihjylwikerhlkhwnrlknrtblnriknrtnbiuenrib',
+            'accessToken' => '6546484653158567489564521565487632',
+        ],
     ];
 
 

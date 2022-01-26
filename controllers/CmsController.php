@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Article;
+use app\models\ArticleCategory;
 use app\models\ArticleContent;
 use Yii;
 use yii\filters\AccessControl;
@@ -113,6 +114,7 @@ class CmsController extends Controller
         if(Yii::$app->user->isGuest) return $this->redirect('/cms/login');
 
         $model = new Article();
+        $categories = ArticleCategory::find()->all();
         $content = new ArticleContent();
         if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model, 'thumbnail');
@@ -128,7 +130,7 @@ class CmsController extends Controller
             $content->content = Yii::$app->request->post()["Article"]["actual_content"];
             if(!$content->save()) {
                 Yii::$app->session->setFlash('error', 'Can\'t save content<br>' . json_encode($content->errors));
-                return $this->render('create', ['model'=>$model]);
+                return $this->render('create', ['model'=>$model,'cats'=>$categories]);
             }
             $model->content_id = $content->id;
             if($model->save()) {
@@ -136,10 +138,10 @@ class CmsController extends Controller
                 return $this->redirect('/cms/index');
             } else {
                 Yii::$app->session->setFlash('error', 'Can\'t save model<br>' . json_encode($model->errors));
-                return $this->render('create', ['model'=>$model]);
+                return $this->render('create', ['model'=>$model,'cats'=>$categories]);
             }
         }
-        return $this->render('create', ['model'=>$model]);
+        return $this->render('create', ['model'=>$model,'cats'=>$categories]);
     }
 
     public function actionEdit($id) {
@@ -147,9 +149,10 @@ class CmsController extends Controller
 
         $model = Article::findOne($id);
         $content = ArticleContent::findOne($model->content_id);
+        $categories = ArticleCategory::find()->all();
         $model->actual_content = $content->content;
         if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
-            $file = UploadedFile::getInstance($model, 'thumbnail');
+            $file = UploadedFile::getInstance($model, 'file_input');
             if($file) {
                 $path = Yii::getAlias("@webroot") . "/img/article_thumbs/";
                 if (!is_dir($path)) {
@@ -162,7 +165,7 @@ class CmsController extends Controller
             $content->content = Yii::$app->request->post()["Article"]["actual_content"];
             if(!$content->save()) {
                 Yii::$app->session->setFlash('error', 'Can\'t save content<br>' . json_encode($content->errors));
-                return $this->render('edit', ['model'=>$model]);
+                return $this->render('edit', ['model'=>$model,'cats'=>$categories]);
             }
             $model->content_id = $content->id;
             if($model->save()) {
@@ -170,9 +173,17 @@ class CmsController extends Controller
                 return $this->redirect('/cms/index');
             } else {
                 Yii::$app->session->setFlash('error', 'Can\'t save model<br>' . json_encode($model->errors));
-                return $this->render('edit', ['model'=>$model]);
+                return $this->render('edit', ['model'=>$model,'cats'=>$categories]);
             }
         }
-        return $this->render('edit', ['model'=>$model]);
+        return $this->render('edit', ['model'=>$model,'cats'=>$categories]);
+    }
+
+    public function actionDelete($id) {
+        $toDelete = Article::findOne($id);
+        $content = $toDelete->content;
+        $toDelete->delete();
+        $content->delete();
+        return $this->redirect('/cms/index');
     }
 }
