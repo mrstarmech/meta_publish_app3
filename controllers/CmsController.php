@@ -200,7 +200,7 @@ class CmsController extends Controller
 
     private function process_img($html, $id) {
         
-        return preg_replace_callback('/(<img.+src=)(".+?")(.*?\/>)/i',function($matches)use($id){
+        return preg_replace_callback('/(<img.+src=)([\",\'].+?[\",\'])(.*?>)/i',function($matches)use($id){
             $src = [];
             preg_match('/([\w\-\+\=\$\#\%\&\?\^\(\)\:\;\<\>\!\~\`\@\d]*?\.\w+)/i',$matches[2],$src);
             return $matches[1]."'/img/uploads/$id/$src[1]'".$matches[3];
