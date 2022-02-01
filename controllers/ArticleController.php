@@ -18,7 +18,7 @@ class ArticleController extends Controller
     // }
 
     public function actionIndex() {
-        $articles = Article::find()->orderBy(new Expression('rand()'))->limit(10)->asArray()->all();
+        $articles = Article::find()->orderBy(new Expression('rand()'))->limit(40)->asArray()->all();
         return json_encode($articles);
     }
 
@@ -33,7 +33,7 @@ class ArticleController extends Controller
     }
 
     public function actionViewc($id) {
-        $articles = Article::find()->where(['category_id'=>$id])->limit(10)->asArray()->all();
+        $articles = Article::find()->where(['category_id'=>$id])->limit(40)->asArray()->all();
         return json_encode($articles);
     }
 }
