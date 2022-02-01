@@ -65,6 +65,7 @@ $config = [
                 'article/<id:\d+>' => 'site/index',
                 'category/<id:\d+>' => 'site/index',
                 'article/undefined' => 'site/ok',
+                'privacy' => 'site/index',
                 '<controller:cms>/<action:\w+>' => '<controller>/<action>',
                 '<controller:cms>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:cms>' => '<controller>',
