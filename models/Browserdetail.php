@@ -18,7 +18,7 @@ use Yii;
  *
  * @property Click[] $clicks
  */
-class Browserdetail extends \yii\db\ActiveRecord
+class BrowserDetail extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
