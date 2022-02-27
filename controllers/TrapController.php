@@ -13,6 +13,7 @@ class TrapController extends \yii\rest\Controller
     {
         if(Yii::$app->request->isPost) {
             $data = json_decode(file_get_contents('php://input'),true);
+            if($data === null) return 'data null';
             $model = new Click();
             $model->requestId = $data['requestId'];
             $model->tag = json_encode($data['tag']);
