@@ -79,16 +79,18 @@ $ilal = $il->attributeLabels();
         </thead>
         <tbody>
             <?php foreach($clicks as $click1): ?>
-                <tr>
-                    <th scope="row"><?=$click1->id?></th>
-                    <td><?=$click1->visitorId?></td>
-                    <td><?=$click1->linkedId?></td>
-                    <td><?=$click1->time?></td>
-                    <td><?=$click1->clientReferer?></td>
-                    <td><?=$click1->ip?></td>
-                    <td><?=$click1->incognito?></td>
-                    <td><a href="/logc/detail/<?=$click1->id?>" class="btn btn-primary" style="font-size:10px;line-height:1;padding:2px"><b>D</b></a></td>
-                </tr>
+                <?php if($click1->id !== $click->id):?>
+                    <tr>
+                        <th scope="row"><?=$click1->id?></th>
+                        <td><?=$click1->visitorId?></td>
+                        <td><?=$click1->linkedId?></td>
+                        <td><?=$click1->time?></td>
+                        <td><?=$click1->clientReferer?></td>
+                        <td><?=$click1->ip?></td>
+                        <td><?=$click1->incognito?></td>
+                        <td><a href="/logc/detail/<?=$click1->id?>" class="btn btn-primary" style="font-size:10px;line-height:1;padding:2px"><b>D</b></a></td>
+                    </tr>
+                <?php endif;?>
             <?php endforeach; ?>
         </tbody>
     </table>
