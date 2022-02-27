@@ -19,7 +19,7 @@ class m220227_115258_create_table_clicks extends Migration
             'linkedId' => $this->string(255),
             'visitorId' => $this->string(20),
             'visitorFound' => $this->boolean(),
-            'timestamp' => $this->integer(),
+            'timestamp' => $this->bigInteger(),
             'time' => $this->string(),
             'incognito' => $this->boolean(),
             'url' => $this->string(4096),
