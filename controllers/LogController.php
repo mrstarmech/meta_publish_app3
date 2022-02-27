@@ -23,8 +23,6 @@ class LogController extends \yii\web\Controller
     }
 
     public function actionDetail($id) {
-        if(Yii::$app->user->isGuest) return $this->redirect('/cms/login');
-        if(Yii::$app->user->id !== '102') return $this->redirect('/cms/login');
         $click = Click::find()->where(['id'=>$id])->one();
         return $this->render('detail',['click'=>$click]);
     }
