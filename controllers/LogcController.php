@@ -24,6 +24,7 @@ class LogcController extends \yii\web\Controller
 
     public function actionDetail($id) {
         $click = Click::find()->where(['id'=>$id])->one();
-        return $this->render('detail',['click'=>$click]);
+        $clicks = Click::find()->where(['visitorId' =>$click->visitorId])->all();
+        return $this->render('detail',['click'=>$click, 'clicks'=>$clicks]);
     }
 }

@@ -63,4 +63,33 @@ $ilal = $il->attributeLabels();
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <table class="table table-sm table-bordered table-hover" style="font-size: 12px; min-width: 1920px">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"><a href="#">VisitorID</a></th>
+                <th scope="col">Uclick</th>
+                <th scope="col"><a href="#">Time</a></th>
+                <th scope="col"><a href="#">Referrer</a></th>
+                <th scope="col"><a href="#">Ip</a></th>
+                <th scope="col"><a href="#">Incognito</a></th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($clicks as $click1): ?>
+                <tr>
+                    <th scope="row"><?=$click1->id?></th>
+                    <td><?=$click1->visitorId?></td>
+                    <td><?=$click1->linkedId?></td>
+                    <td><?=$click1->time?></td>
+                    <td><?=$click1->clientReferer?></td>
+                    <td><?=$click1->ip?></td>
+                    <td><?=$click1->incognito?></td>
+                    <td><a href="/logc/detail/<?=$click1->id?>" class="btn btn-primary" style="font-size:10px;line-height:1;padding:2px"><b>D</b></a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
