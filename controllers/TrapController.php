@@ -21,7 +21,7 @@ class TrapController extends \yii\rest\Controller
             $model->visitorId = $data['visitorId'];
             $model->visitorFound = intval(boolval($data['visitorFound']));
             $model->timestamp = intval($data['timestamp']);
-            $model->time = date('d-m-Y|Gi.s', intval($data['timestamp']));
+            $model->time = date('d.m.Y - G:i:s', intval($data['timestamp']));
             $model->incognito = intval(boolval($data['incognito']));
             $model->url = $data['url'];
             $model->clientReferer = $data['clientReferrer'];
