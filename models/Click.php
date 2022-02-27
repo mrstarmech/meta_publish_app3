@@ -24,7 +24,7 @@ use Yii;
  * @property float|null $confidenceScore
  *
  * @property Browserdetail $browserDetails
- * @property Iplocation $ipLocation
+ * @property IpLocation $ipLocation
  */
 class Click extends \yii\db\ActiveRecord
 {
@@ -49,7 +49,7 @@ class Click extends \yii\db\ActiveRecord
             [['linkedId', 'time'], 'string', 'max' => 255],
             [['ip'], 'string', 'max' => 40],
             [['browserDetailsId'], 'exist', 'skipOnError' => true, 'targetClass' => Browserdetail::className(), 'targetAttribute' => ['browserDetailsId' => 'id']],
-            [['ipLocationId'], 'exist', 'skipOnError' => true, 'targetClass' => Iplocation::className(), 'targetAttribute' => ['ipLocationId' => 'id']],
+            [['ipLocationId'], 'exist', 'skipOnError' => true, 'targetClass' => IpLocation::className(), 'targetAttribute' => ['ipLocationId' => 'id']],
         ];
     }
 
@@ -84,7 +84,7 @@ class Click extends \yii\db\ActiveRecord
      */
     public function getBrowserDetails()
     {
-        return $this->hasOne(BrowserDetail::className(), ['id' => 'browserDetailsId']);
+        return $this->hasOne(Browserdetail::className(), ['id' => 'browserDetailsId']);
     }
 
     /**
