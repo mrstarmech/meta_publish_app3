@@ -29,8 +29,8 @@ AppAsset::register($this);
 <header>
     <?php
     NavBar::begin([
-        'brandLabel' => 'MetaPublish',
-        'brandUrl' => '@web/traplog/index',
+        'brandLabel' => 'MetaDeratificatorLog',
+        'brandUrl' => '@web/log',
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
@@ -42,7 +42,7 @@ AppAsset::register($this);
         ];
     } else {
         $navItems = [
-            ['label' => 'Clicks List', 'url' => ['/log/index']],
+            ['label' => 'Clicks List', 'url' => ['/log']],
             (
             '<li>'
             . Html::beginForm(['/cms/logout'], 'post', ['class' => 'form-inline'])
