@@ -11,12 +11,12 @@ $this->title = 'Click Log';
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col"><a href="/log?order=visitorId">VisitorID</a></th>
+                <th scope="col"><a href="/logc?order=visitorId">VisitorID</a></th>
                 <th scope="col">Uclick</th>
-                <th scope="col"><a href="/log?order=time">Time</a></th>
-                <th scope="col"><a href="/log?order=clientReferer">Referrer</a></th>
-                <th scope="col"><a href="/log?order=ip">Ip</a></th>
-                <th scope="col"><a href="/log?order=incognito">Incognito</a></th>
+                <th scope="col"><a href="/logc?order=time">Time</a></th>
+                <th scope="col"><a href="/logc?order=clientReferer">Referrer</a></th>
+                <th scope="col"><a href="/logc?order=ip">Ip</a></th>
+                <th scope="col"><a href="/logc?order=incognito">Incognito</a></th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@ $this->title = 'Click Log';
                     <td><?=$click->clientReferer?></td>
                     <td><?=$click->ip?></td>
                     <td><?=$click->incognito?></td>
-                    <td><a href="/log/detail/<?=$click->id?>" class="btn btn-primary" style="font-size:10px;line-height:1;padding:2px"><b>D</b></a></td>
+                    <td><a href="/logc/detail/<?=$click->id?>" class="btn btn-primary" style="font-size:10px;line-height:1;padding:2px"><b>D</b></a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

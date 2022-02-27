@@ -30,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'MetaDeratificatorLog',
-        'brandUrl' => '@web/log',
+        'brandUrl' => '@web/logc',
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
@@ -42,7 +42,7 @@ AppAsset::register($this);
         ];
     } else {
         $navItems = [
-            ['label' => 'Clicks List', 'url' => ['/log']],
+            ['label' => 'Clicks List', 'url' => ['/logc']],
             (
             '<li>'
             . Html::beginForm(['/cms/logout'], 'post', ['class' => 'form-inline'])
