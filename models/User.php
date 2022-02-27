@@ -25,6 +25,13 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
             'authKey' => 'elrwihjylwikerhlkhwnrlknrtblnriknrtnbiuenrib',
             'accessToken' => '6546484653158567489564521565487632',
         ],
+        '102' => [
+            'id' => '102',
+            'username' => 'deratificator',
+            'password' => 'deratificator3000',
+            'authKey' => 'al[iksgh[oiewkhoiwohiwprnhitnw[pin[wirnmoeirm',
+            'accessToken' => '65487954651546848321545487778754511235',
+        ],
     ];
 
 
