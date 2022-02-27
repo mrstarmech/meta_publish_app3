@@ -25,7 +25,7 @@ class Browserdetail extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'browserdetails';
+        return 'browserDetails';
     }
 
     /**

@@ -26,7 +26,7 @@ class IpLocation extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'iplocation';
+        return 'ipLocation';
     }
 
     /**
