@@ -84,7 +84,7 @@ class Click extends \yii\db\ActiveRecord
      */
     public function getBrowserDetails()
     {
-        return $this->hasOne(Browserdetail::className(), ['id' => 'browserDetailsId']);
+        return $this->hasOne(BrowserDetail::className(), ['id' => 'browserDetailsId']);
     }
 
     /**
@@ -94,6 +94,6 @@ class Click extends \yii\db\ActiveRecord
      */
     public function getIpLocation()
     {
-        return $this->hasOne(Iplocation::className(), ['id' => 'ipLocationId']);
+        return $this->hasOne(IpLocation::className(), ['id' => 'ipLocationId']);
     }
 }
