@@ -7,7 +7,7 @@ use app\models\Click;
 use app\models\IpLocation;
 use Yii;
 
-class LogController extends \yii\web\Controller
+class LogcController extends \yii\web\Controller
 {
     public $layout = 'log';
 
