@@ -30,7 +30,6 @@ VueAsset::register($this);
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4322962578351454" crossorigin="anonymous"></script>
     <?php $this->head() ?>
 </head>
 
