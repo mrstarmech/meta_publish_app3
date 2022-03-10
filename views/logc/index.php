@@ -14,7 +14,7 @@ $this->title = 'Click Log';
                 <th scope="col"><a href="/logc?order=visitorId">VisitorID</a></th>
                 <th scope="col">Uclick</th>
                 <th scope="col"><a href="/logc?order=time">Time</a></th>
-                <th scope="col"><a href="/logc?order=clientReferer">Referrer</a></th>
+                <th scope="col"><a href="/logc?order=clientReferer">Url</a></th>
                 <th scope="col"><a href="/logc?order=ip">Ip</a></th>
                 <th scope="col"><a href="/logc?order=incognito">Incognito</a></th>
                 <th scope="col">Actions</th>
@@ -27,7 +27,7 @@ $this->title = 'Click Log';
                     <td><?=$click->visitorId?></td>
                     <td><?=$click->linkedId?></td>
                     <td><?=$click->time?></td>
-                    <td><?=$click->clientReferer?></td>
+                    <td><?=$click->url?></td>
                     <td><?=$click->ip?></td>
                     <td><?=$click->incognito?></td>
                     <td><a href="/logc/detail/<?=$click->id?>" class="btn btn-primary" style="font-size:10px;line-height:1;padding:2px"><b>D</b></a></td>
