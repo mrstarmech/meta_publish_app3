@@ -32,8 +32,8 @@ class ArticleController extends Controller
         return json_encode($article);
     }
 
-    public function actionViewc($id) {
-        $articles = Article::find()->where(['category_id'=>$id])->limit(40)->asArray()->all();
+    public function actionViewc($id,$limit=null) {
+        $articles = Article::find()->where(['category_id'=>$id])->limit($limit)->orderBy(new Expression('rand()'))->asArray()->all();
         return json_encode($articles);
     }
 }
