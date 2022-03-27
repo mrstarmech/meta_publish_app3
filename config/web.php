@@ -70,6 +70,7 @@ $config = [
                 '<controller:cms>/<action:\w+>' => '<controller>/<action>',
                 '<controller:cms>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:cms>' => '<controller>',
+                '/ok' => 'site/ok',
                 '/' => 'site/index',
             ],
         ],
