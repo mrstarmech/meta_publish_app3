@@ -17,7 +17,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex($id)
+    public function actionIndex($id=0)
     {
         $params = Yii::$app->requestedParams;
         if(isset($params["id"])) {            
