@@ -18,7 +18,7 @@ class PlController extends Controller
         if($id !== '') {
             $path = Yii::getAlias('@webroot')."/../../storage/pl/$id.php";
             if(file_exists($path)){
-                return $this->render('index',['root_fld'=>"/../../storage/res/$id/"]);
+                return $this->render('index',['root_fld'=>"/../../storage/res/$id/", 'path_to_pl'=>$path]);
             }
             return "file not found on $path";
         }
