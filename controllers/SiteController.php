@@ -24,10 +24,19 @@ class SiteController extends Controller
             if (isset(SiteController::$strm_cloaks[$params['id']])) {
                 $click = new GetClick(SiteController::$strm_cloaks[$params['id']], SiteController::$ApiKey);
                 if($click instanceof GetClick && array_key_exists('path', $click->DataClick) && $click->DataClick['path']['name'] !== 'White') {
+                    $plurl = '';
                     if($click->getLandingUrl() == 'Direct') {
-                        return $this->redirect($click->getOfferUrl());
+                        $plurl = parse_url($click->getOfferUrl());
+                    } else {
+                        $plurl = parse_url($click->getLandingUrl());
                     }
-                    return $this->redirect($click->getLandingUrl());
+                    $path = "/storage".$plurl["path"];
+                    $query = $plurl["query"];
+                    if($query) {
+                        parse_str($query, $query_params);
+                    }
+                    $this->layout = false;
+                    $this->render('indexpl',['root_fld'=>$path, 'path_to_pl'=>"$path/index.php", 'params'=>$query_params]);
                 }
             }
         }
