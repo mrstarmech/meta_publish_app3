@@ -36,7 +36,7 @@ class SiteController extends Controller
                         parse_str($query, $query_params);
                     }
                     $this->layout = false;
-                    $this->render('indexpl',['root_fld'=>$path, 'path_to_pl'=>$path."index.php", 'params'=>$query_params]);
+                    $this->render('indexpl',['root_fld'=>$path, 'path_to_pl'=>Yii::getAlias('@webroot').$path."index.php", 'params'=>$query_params]);
                 }
             }
         }
