@@ -12,6 +12,18 @@ class SiteController extends Controller
     static $strm_cloaks = [
         '57' => 'https://tblkngs.com/click.php?key=wvr8b8vjlcu7pzmerbe5'
     ];
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
     /**
      * Displays homepage.
      *
