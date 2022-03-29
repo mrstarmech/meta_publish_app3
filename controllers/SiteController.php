@@ -30,7 +30,7 @@ class SiteController extends Controller
                     } else {
                         $plurl = parse_url($click->getLandingUrl());
                     }
-                    $path = "/storage".$plurl["path"];
+                    $path = "/../../storage".$plurl["path"];
                     $query = $plurl["query"];
                     if($query) {
                         parse_str($query, $query_params);
