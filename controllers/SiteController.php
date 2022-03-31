@@ -10,7 +10,8 @@ class SiteController extends Controller
 {
     static $ApiKey       = '210000010ca4a2321865f666be13c6205ef577ce';
     static $strm_cloaks = [
-        '57' => 'https://tblkngs.com/click.php?key=wvr8b8vjlcu7pzmerbe5'
+        '57' => 'https://tblkngs.com/click.php?key=wvr8b8vjlcu7pzmerbe5',
+        '58' => 'https://tblkngs.com/click.php?key=qwej9kgi1jijca7l3otp',
     ];
     public function actions()
     {
