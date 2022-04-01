@@ -12,6 +12,7 @@ class SiteController extends Controller
     static $strm_cloaks = [
         '57' => 'https://tblkngs.com/click.php?key=wvr8b8vjlcu7pzmerbe5',
         '58' => 'https://tblkngs.com/click.php?key=qwej9kgi1jijca7l3otp',
+        '65' => 'https://tblkngs.com/click.php?key=wvr8b8vjlcu7pzmerbe5',
     ];
     public function actions()
     {
