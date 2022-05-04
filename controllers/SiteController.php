@@ -31,7 +31,7 @@ class SiteController extends Controller
         $params = Yii::$app->requestedParams;
         if(isset($params["id"])) {            
             if (isset($strm_cloaks[$params['id']])) {
-                $click = new GetClick($strm_cloaks[$params['id']], $ApiKey);
+                $click = new GetClick($strm_cloaks[$params['id']], $BnmApiKey($strm_cloaks[$params['id']]));
                 if($click instanceof GetClick && array_key_exists('path', $click->DataClick) && $click->DataClick['path']['name'] !== 'White') {
                     $plurl = '';
                     if($click->getLandingUrl() == 'Direct') {
