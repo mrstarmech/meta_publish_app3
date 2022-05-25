@@ -21,7 +21,8 @@ class VueAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/app.css',
-        'css/normalize.css'
+        'css/normalize.css',
+        'css/site.css'
     ];
     public $js = [
         'app.js'
