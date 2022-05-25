@@ -83,6 +83,6 @@ a.desc:after {
     outline: none;
 }
 
-.figure {
+figure {
     width: auto !important;
 }
