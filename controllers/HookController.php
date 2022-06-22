@@ -14,7 +14,8 @@ class HookController extends Controller
     public function actionTb() {
         $rq_params = Yii::$app->request->queryParams;
         $accid = isset($rq_params['accid']) ? $rq_params['accid'] : 0;
-        if (isset($rq_params['tbl_click_id']) && isset($rq_params['tbl_event_name']) && $accid) {
+        $is_appr = isset($rq_params['cnv_status']) && $rq_params['cnv_status'] == 'appr';
+        if (isset($rq_params['tbl_click_id']) && isset($rq_params['tbl_event_name']) && $accid && $is_appr) {
             $content = json_encode([
                 "actions" => [
                     [
