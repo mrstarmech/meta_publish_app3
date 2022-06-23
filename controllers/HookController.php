@@ -16,6 +16,7 @@ class HookController extends Controller
         $accid = isset($rq_params['accid']) ? $rq_params['accid'] : 0;
         $is_appr = isset($rq_params['cnv_status']) && $rq_params['cnv_status'] == 'appr';
         if (isset($rq_params['tbl_click_id']) && isset($rq_params['tbl_event_name']) && $accid && $is_appr) {
+            date_default_timezone_set("Europe/Moscow");
             $content = json_encode([
                 "actions" => [
                     [
